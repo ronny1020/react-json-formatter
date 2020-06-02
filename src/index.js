@@ -3,7 +3,7 @@ import React from 'react'
 export const JsonFormatter = ({ json }) => {
   const jsonObject = JSON.parse(json)
 
-  function category(data) {
+  function categorize(data) {
     switch (Object.prototype.toString.call(data)) {
       case '[object Number]': {
         const dataJSX = isNaN(data) ? (
@@ -33,7 +33,7 @@ export const JsonFormatter = ({ json }) => {
             <div>
               <span className='react-json-key'>{i}</span>
               <span className='react-json-colon'>:</span>
-              {category(data[i])}
+              {categorize(data[i])}
             </div>
           )
         }
@@ -45,7 +45,7 @@ export const JsonFormatter = ({ json }) => {
         const dataJSX = []
         dataJSX.push(<span className='react-json-bracket'>[</span>)
         for (const i of data) {
-          dataJSX.push(category(i))
+          dataJSX.push(categorize(i))
         }
         dataJSX.push(<span className='react-json-bracket'>]</span>)
         return dataJSX
@@ -65,7 +65,7 @@ export const JsonFormatter = ({ json }) => {
 
   return (
     <div className='react-json'>
-      <div>{category(jsonObject)}</div>
+      <div>{categorize(jsonObject)}</div>
     </div>
   )
 }
