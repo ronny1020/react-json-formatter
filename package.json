@@ -1,10 +1,10 @@
 {
-  "name": "react-json-formater",
+  "name": "react-json-formatter",
   "version": "1.0.0",
-  "description": "React component to formate json data",
+  "description": "Formatting json data to JSX of React",
   "author": "ronny1020",
   "license": "MIT",
-  "repository": "ronny1020/react-json-formater",
+  "repository": "ronny1020/react-json-formatter",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
