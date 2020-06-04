@@ -19,11 +19,8 @@ export const JsonFormatter = ({ json, tabWith }) => {
   function categorize(data) {
     switch (Object.prototype.toString.call(data)) {
       case '[object Number]': {
-        const dataJSX = isNaN(data) ? (
-          <span className='react-json-nan'>NaN</span>
-        ) : (
-          <span className='react-json-number'>{data}</span>
-        )
+        const dataJSX = <span className='react-json-number'>{data}</span>
+
         return dataJSX
       }
 

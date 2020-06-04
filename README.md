@@ -12,18 +12,101 @@ npm install --save react-json-formatter
 
 ## Usage
 
+App.js
+
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'react-json-formatter'
-import 'react-json-formatter/dist/index.css'
+import { JsonFormatter } from 'react-json-formatter'
+import './index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  const sample = `{
+   "string":"ABCDE",
+   "number":1,
+   "null":null,
+   "boolean":true,
+   "object":{
+      "string":"ABCDE",
+      "number":1,
+      "null":null,
+      "boolean":true
+   },
+   "array":[
+      1,
+      2,
+      3,
+      4,
+      {
+      "string":"ABCDE",
+      "number":1,
+      "null":null,
+      "boolean":true,
+         "array":[
+      1,
+      2,
+      3,
+      4,
+      {
+      "string":"ABCDE",
+      "number":1,
+      "null":null,
+      "boolean":true
+   }
+   ]
+   }
+   ]
+}
+`
+
+  return <JsonFormatter json={sample} tabWith='2' />
+}
+
+export default App
 }
 ```
+
+index.css
+
+```css
+.react-json-property {
+  color: red;
+}
+```
+
+## Demo
+
+[Demo](https://ronny1020.github.io/react-json-formatter/)
+
+## Attributes
+
+### json : string(Json)
+
+The string of Json to formate.
+
+### tabWith : number
+
+Number of spaces it should use per tab.
+The default is 4.
+
+## style
+
+There is className for parts of the formatted Json.
+Thus, the style can be changed by className.
+
+| className           | part                                      |
+| ------------------- | ----------------------------------------- |
+| react-json          | The whole parts of the formatted Json.    |
+| react-json-tabSpace | The space of the tabs at Object or Array. |
+| react-json-number   | The numbers in Json.                      |
+| react-json-string   | The strings in Json.                      |
+| react-json-true     | The boolean values of true in Json.       |
+| react-json-false    | The boolean values of false in Json.      |
+| react-json-brace    | The braces of Object.                     |
+| react-json-property | The properties of Object.                 |
+| react-json-colon    | The colons of Object.                     |
+| react-json-bracket  | The brackets of Array.                    |
+| react-json-null     | The null values in Json                   |
 
 ## License
 
