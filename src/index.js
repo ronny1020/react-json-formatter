@@ -101,10 +101,6 @@ export const JsonFormatter = ({ json, tabWith }) => {
         )
         return dataJSX
       }
-      case '[object Undefined]': {
-        const dataJSX = <span className='react-json-undefined'>undefined</span>
-        return dataJSX
-      }
       case '[object Null]': {
         const dataJSX = <span className='react-json-null'>null</span>
         return dataJSX
