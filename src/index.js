@@ -50,7 +50,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
             <React.Fragment>
               {repeatTabSpace(TabSpaceRepeatTimes)}
               <span className='react-json-property'>{i}</span>
-              <span className='react-json-colon'>:</span>
+              <span className='react-json-colon'>: </span>
               {categorize(data[i])}
               <br />
             </React.Fragment>

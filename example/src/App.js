@@ -33,6 +33,8 @@ const App = () => {
     "not ie <= 11",
     "not op_mini all",
     {"a":"a"}
+  ],
+  "test":[1,2,3,4
   ]
 }
 `
