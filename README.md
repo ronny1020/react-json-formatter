@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save react-json-formatter
+npm i react-json-formatter
 ```
 
 ## Usage
