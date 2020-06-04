@@ -31,12 +31,13 @@ const App = () => {
     ">0.2%",
     "not dead",
     "not ie <= 11",
-    "not op_mini all"
+    "not op_mini all",
+    {"a":"a"}
   ]
 }
 `
 
-  return <JsonFormatter json={sample} />
+  return <JsonFormatter json={sample} tabWith='4' />
 }
 
 export default App

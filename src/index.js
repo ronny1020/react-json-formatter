@@ -1,7 +1,18 @@
 import React from 'react'
 
-export const JsonFormatter = ({ json }) => {
+export const JsonFormatter = ({ json, tabWith }) => {
   const jsonObject = JSON.parse(json)
+  const tabSpace = (
+    <span className='react-json-tabSpace'>{'\xa0'.repeat(tabWith || 4)}</span>
+  )
+  const repeatTabSpace = (times) => {
+    const repeatedTabSpace = []
+    for (let i = 0; i < times; i++) {
+      repeatedTabSpace.push(tabSpace)
+    }
+    return repeatedTabSpace
+  }
+  let TabSpaceRepeatTimes = 0
 
   function categorize(data) {
     switch (Object.prototype.toString.call(data)) {
@@ -27,27 +38,59 @@ export const JsonFormatter = ({ json }) => {
       }
       case '[object Object]': {
         const dataJSX = []
-        dataJSX.push(<span className='react-json-brace'>{'{'}</span>)
+        dataJSX.push(
+          <React.Fragment>
+            <span className='react-json-brace'>{'{'}</span>
+            <br />
+          </React.Fragment>
+        )
+        TabSpaceRepeatTimes++
         for (const i in data) {
           dataJSX.push(
-            <div>
-              <span className='react-json-key'>{i}</span>
+            <React.Fragment>
+              {repeatTabSpace(TabSpaceRepeatTimes)}
+              <span className='react-json-property'>{i}</span>
               <span className='react-json-colon'>:</span>
               {categorize(data[i])}
-            </div>
+              <br />
+            </React.Fragment>
           )
         }
-        dataJSX.push(<span className='react-json-brace'>{'}'}</span>)
+        TabSpaceRepeatTimes--
+        dataJSX.push(
+          <React.Fragment>
+            {repeatTabSpace(TabSpaceRepeatTimes)}
+            <span className='react-json-brace'>{'}'}</span>
+          </React.Fragment>
+        )
         return dataJSX
       }
 
       case '[object Array]': {
         const dataJSX = []
-        dataJSX.push(<span className='react-json-bracket'>[</span>)
+
+        dataJSX.push(
+          <React.Fragment>
+            <span className='react-json-bracket'>[</span>
+            <br />
+          </React.Fragment>
+        )
+        TabSpaceRepeatTimes++
         for (const i of data) {
-          dataJSX.push(categorize(i))
+          dataJSX.push(
+            <React.Fragment>
+              {repeatTabSpace(TabSpaceRepeatTimes)} {categorize(i)}
+              <br />
+            </React.Fragment>
+          )
         }
-        dataJSX.push(<span className='react-json-bracket'>]</span>)
+        TabSpaceRepeatTimes--
+        dataJSX.push(
+          <React.Fragment>
+            {repeatTabSpace(TabSpaceRepeatTimes)}
+            <span className='react-json-bracket'>]</span>
+          </React.Fragment>
+        )
         return dataJSX
       }
       case '[object Undefined]': {
