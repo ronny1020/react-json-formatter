@@ -91,7 +91,7 @@ The default is 4.
 
 ## style
 
-There is className for parts of the formatted Json.
+There is className for each part of the formatted Json.
 Thus, the style can be changed by className.
 
 | className           | part                                      |
@@ -107,6 +107,10 @@ Thus, the style can be changed by className.
 | react-json-colon    | The colons of Object.                     |
 | react-json-bracket  | The brackets of Array.                    |
 | react-json-null     | The null values in Json                   |
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
