@@ -55,7 +55,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
           dataJSX.push(
             <React.Fragment key={i}>
               {repeatTabSpace(TabSpaceRepeatTimes)}
-              <span className='react-json-property'>{i}</span>
+              <span className='react-json-property'>{`"` + i + `"`}</span>
               <span className='react-json-colon'>: </span>
               {categorize(data[i])}
               {i === keys[keys.length - 1] ? null : (
