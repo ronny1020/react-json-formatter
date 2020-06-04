@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { JsonFormatter } from 'react-json-formater'
-import 'react-json-formater/dist/index.css'
+import { JsonFormatter } from 'react-json-formatter'
+import './index.css'
 
 const App = () => {
   const sample = `{
-  "name": "react-json-formater-example",
+  "name": "react-json-formatter-example",
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
@@ -19,7 +19,7 @@ const App = () => {
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "file:../node_modules/react-scripts",
-    "react-json-formater": "file:.."
+    "react-json-formatter": "file:.."
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"

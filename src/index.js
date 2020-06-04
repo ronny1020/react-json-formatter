@@ -44,6 +44,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
             <br />
           </React.Fragment>
         )
+        const keys = Object.keys(data)
         TabSpaceRepeatTimes++
         for (const i in data) {
           dataJSX.push(
@@ -52,6 +53,9 @@ export const JsonFormatter = ({ json, tabWith }) => {
               <span className='react-json-property'>{i}</span>
               <span className='react-json-colon'>: </span>
               {categorize(data[i])}
+              {i === keys.length - 1 ? null : (
+                <span className='react-json-comma'>,</span>
+              )}
               <br />
             </React.Fragment>
           )
@@ -76,10 +80,14 @@ export const JsonFormatter = ({ json, tabWith }) => {
           </React.Fragment>
         )
         TabSpaceRepeatTimes++
-        for (const i of data) {
+        for (let i = 0; i < data.length; i++) {
           dataJSX.push(
             <React.Fragment>
-              {repeatTabSpace(TabSpaceRepeatTimes)} {categorize(i)}
+              {repeatTabSpace(TabSpaceRepeatTimes)}
+              {categorize(data[i])}
+              {i === data.length - 1 ? null : (
+                <span className='react-json-comma'>,</span>
+              )}
               <br />
             </React.Fragment>
           )
