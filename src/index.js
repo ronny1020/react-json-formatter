@@ -1,13 +1,13 @@
 import React from 'react'
 
-export const JsonFormatter = ({ json, tabWith }) => {
+export const JsonFormatter = ({ json, tabWith, JsonStyle }) => {
   const jsonObject = JSON.parse(json)
 
   const repeatTabSpace = (times) => {
     const repeatedTabSpace = []
     for (let i = 0; i < times; i++) {
       repeatedTabSpace.push(
-        <span className='react-json-tabSpace' key={i}>
+        <span style={JsonStyle.tabSpaceStyle} key={i}>
           {'\xa0'.repeat(tabWith || 4)}
         </span>
       )
@@ -19,21 +19,21 @@ export const JsonFormatter = ({ json, tabWith }) => {
   function categorize(data) {
     switch (Object.prototype.toString.call(data)) {
       case '[object Number]': {
-        const dataJSX = <span className='react-json-number'>{data}</span>
+        const dataJSX = <span style={JsonStyle.numberStyle}>{data}</span>
 
         return dataJSX
       }
 
       case '[object String]': {
-        const dataJSX = <span className='react-json-string'>"{data}"</span>
+        const dataJSX = <span style={JsonStyle.stringStyle}>"{data}"</span>
         return dataJSX
       }
 
       case '[object Boolean]': {
         const dataJSX = data ? (
-          <span className='react-json-true'>true</span>
+          <span style={JsonStyle.booleanTrueStyle}>true</span>
         ) : (
-          <span className='react-json-false'>false</span>
+          <span style={JsonStyle.booleanFalseStyle}>false</span>
         )
         return dataJSX
       }
@@ -42,7 +42,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
         const dataJSX = []
         dataJSX.push(
           <React.Fragment key={'{'}>
-            <span className='react-json-brace'>{'{'}</span>
+            <span style={JsonStyle.braceStyle}>{'{'}</span>
             <br />
           </React.Fragment>
         )
@@ -52,11 +52,11 @@ export const JsonFormatter = ({ json, tabWith }) => {
           dataJSX.push(
             <React.Fragment key={i}>
               {repeatTabSpace(TabSpaceRepeatTimes)}
-              <span className='react-json-property'>{`"` + i + `"`}</span>
-              <span className='react-json-colon'>: </span>
+              <span style={JsonStyle.propertyStyle}>{`"` + i + `"`}</span>
+              <span style={JsonStyle.colonStyle}>: </span>
               {categorize(data[i])}
               {i === keys[keys.length - 1] ? null : (
-                <span className='react-json-comma'>,</span>
+                <span style={JsonStyle.commaStyle}>,</span>
               )}
               <br />
             </React.Fragment>
@@ -66,7 +66,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
         dataJSX.push(
           <React.Fragment key={'}'}>
             {repeatTabSpace(TabSpaceRepeatTimes)}
-            <span className='react-json-brace'>{'}'}</span>
+            <span style={JsonStyle.braceStyle}>{'}'}</span>
           </React.Fragment>
         )
         return dataJSX
@@ -77,7 +77,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
 
         dataJSX.push(
           <React.Fragment key='['>
-            <span className='react-json-bracket'>[</span>
+            <span style={JsonStyle.bracketStyle}>[</span>
             <br />
           </React.Fragment>
         )
@@ -88,7 +88,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
               {repeatTabSpace(TabSpaceRepeatTimes)}
               {categorize(data[i])}
               {i === data.length - 1 ? null : (
-                <span className='react-json-comma'>,</span>
+                <span style={JsonStyle.commaStyle}>,</span>
               )}
               <br />
             </React.Fragment>
@@ -98,14 +98,14 @@ export const JsonFormatter = ({ json, tabWith }) => {
         dataJSX.push(
           <React.Fragment key=']'>
             {repeatTabSpace(TabSpaceRepeatTimes)}
-            <span className='react-json-bracket'>]</span>
+            <span style={JsonStyle.bracketStyle}>]</span>
           </React.Fragment>
         )
         return dataJSX
       }
 
       case '[object Null]': {
-        const dataJSX = <span className='react-json-null'>null</span>
+        const dataJSX = <span style={JsonStyle.nullStyle}>null</span>
         return dataJSX
       }
       default:
@@ -114,7 +114,7 @@ export const JsonFormatter = ({ json, tabWith }) => {
   }
 
   return (
-    <div className='react-json'>
+    <div style={JsonStyle.style}>
       <div>{categorize(jsonObject)}</div>
     </div>
   )

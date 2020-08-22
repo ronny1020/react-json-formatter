@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { JsonFormatter } from 'react-json-formatter'
-import './index.css'
 
 const App = () => {
   const sample = `{
@@ -42,7 +41,13 @@ const App = () => {
 }
 `
 
-  return <JsonFormatter json={sample} tabWith='4' />
+  const JsonStyle = {
+    propertyStyle: { color: 'red' },
+    stringStyle: { color: 'green' },
+    numberStyle: { color: 'darkorange' }
+  }
+
+  return <JsonFormatter json={sample} tabWith='4' JsonStyle={JsonStyle} />
 }
 
 export default App
