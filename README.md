@@ -18,7 +18,6 @@ App.js
 import React from 'react'
 
 import { JsonFormatter } from 'react-json-formatter'
-import './index.css'
 
 const App = () => {
   const sample = `{
@@ -59,19 +58,16 @@ const App = () => {
 }
 `
 
-  return <JsonFormatter json={sample} tabWith='2' />
+  const JsonStyle = {
+    propertyStyle: { color: 'red' },
+    stringStyle: { color: 'green' },
+    numberStyle: { color: 'darkorange' }
+  }
+
+  return <JsonFormatter json={sample} tabWith='4' JsonStyle={JsonStyle} />
 }
 
 export default App
-}
-```
-
-index.css
-
-```css
-.react-json-property {
-  color: red;
-}
 ```
 
 ## Demo
@@ -91,22 +87,24 @@ The default is 4.
 
 ## style
 
-There is className for each part of the formatted Json.
-Thus, the style can be changed by className.
+Use the Object JsonStyle to control the style of formatted Json.
 
-| className           | part                                      |
-| ------------------- | ----------------------------------------- |
-| react-json          | The whole parts of the formatted Json.    |
-| react-json-tabSpace | The space of the tabs at Object or Array. |
-| react-json-number   | The numbers in Json.                      |
-| react-json-string   | The strings in Json.                      |
-| react-json-true     | The boolean values of true in Json.       |
-| react-json-false    | The boolean values of false in Json.      |
-| react-json-brace    | The braces of Object.                     |
-| react-json-property | The properties of Object.                 |
-| react-json-colon    | The colons of Object.                     |
-| react-json-bracket  | The brackets of Array.                    |
-| react-json-null     | The null values in Json                   |
+- from the 0.2.0 version, NOT support for className.
+
+| style         | part                                      |
+| ------------- | ----------------------------------------- |
+| propertyStyle | The properties of Object.                 |
+| colonStyle    | The colons of Object.                     |
+| style         | The whole parts of the formatted Json.    |
+| tabSpaceStyle | The space of the tabs at Object or Array. |
+| numberStyle   | The numbers in Json.                      |
+| stringStyle   | The strings in Json.                      |
+| trueStyle     | The boolean values of true in Json.       |
+| falseStyle    | The boolean values of false in Json.      |
+| nullStyle     | The null values in Json                   |
+| commaStyle    | The commas used in Array and Object       |
+| braceStyle    | The braces of Object.                     |
+| bracketStyle  | The brackets of Array.                    |
 
 ## Contributing
 
