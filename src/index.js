@@ -31,9 +31,13 @@ export const JsonFormatter = ({ json, tabWith, JsonStyle }) => {
 
       case '[object Boolean]': {
         const dataJSX = data ? (
-          <span style={JsonStyle.booleanTrueStyle}>true</span>
+          <span style={{ ...JsonStyle.booleanStyle, ...JsonStyle.trueStyle }}>
+            true
+          </span>
         ) : (
-          <span style={JsonStyle.booleanFalseStyle}>false</span>
+          <span style={{ ...JsonStyle.booleanStyle, ...JsonStyle.trueStyle }}>
+            false
+          </span>
         )
         return dataJSX
       }
@@ -41,7 +45,7 @@ export const JsonFormatter = ({ json, tabWith, JsonStyle }) => {
       case '[object Object]': {
         const dataJSX = []
         dataJSX.push(
-          <React.Fragment key={'{'}>
+          <React.Fragment key='{'>
             <span style={JsonStyle.braceStyle}>{'{'}</span>
             <br />
           </React.Fragment>
@@ -64,7 +68,7 @@ export const JsonFormatter = ({ json, tabWith, JsonStyle }) => {
         }
         TabSpaceRepeatTimes--
         dataJSX.push(
-          <React.Fragment key={'}'}>
+          <React.Fragment key='}'>
             {repeatTabSpace(TabSpaceRepeatTimes)}
             <span style={JsonStyle.braceStyle}>{'}'}</span>
           </React.Fragment>
