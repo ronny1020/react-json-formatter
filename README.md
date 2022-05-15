@@ -58,13 +58,13 @@ const App = () => {
 }
 `
 
-  const JsonStyle = {
+  const jsonStyle = {
     propertyStyle: { color: 'red' },
     stringStyle: { color: 'green' },
     numberStyle: { color: 'darkorange' }
   }
 
-  return <JsonFormatter json={sample} tabWith='4' JsonStyle={JsonStyle} />
+  return <JsonFormatter json={sample} tabWith='4' jsonStyle={jsonStyle} />
 }
 
 export default App
@@ -76,18 +76,18 @@ export default App
 
 ## Attributes
 
-### json : string(Json)
+### json: string(Json)
 
 The string of Json to formate.
 
-### tabWith : number
+### tabWith: number
 
 The number of spaces it should use per tab.
 The default is 4.
 
 ## style
 
-Use the Object JsonStyle to control the style of formatted JSON.
+Use the Object jsonStyle to control the style of formatted JSON.
 
 - from the 0.2.0 version, NOT support for className.
 

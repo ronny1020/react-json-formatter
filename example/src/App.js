@@ -47,7 +47,7 @@ const App = () => {
     numberStyle: { color: 'darkorange' }
   }
 
-  return <JsonFormatter json={sample} tabWith='4' JsonStyle={JsonStyle} />
+  return <JsonFormatter json={sample} tabWith={4} jsonStyle={JsonStyle} />
 }
 
 export default App
