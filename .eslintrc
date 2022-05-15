@@ -1,11 +1,25 @@
 {
-  "parser": "@babel/eslint-parser",
   "extends": [
-    "standard",
-    "standard-react",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
     "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:typescript-sort-keys/recommended"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "jest",
+    "sort-keys-fix",
+    "typescript-sort-keys",
+    "sort-destructure-keys"
   ],
   "env": {
     "node": true
@@ -18,20 +32,86 @@
       "jsx": true,
       "legacyDecorators": true
     },
-    "ecmaVersion": 2020,
-    "requireConfigFile": false
+    "ecmaVersion": 2021,
+    "requireConfigFile": false,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
+  "parser": "@typescript-eslint/parser",
   "settings": {
     "react": {
       "version": "16"
     }
   },
   "rules": {
-    "space-before-function-paren": 0,
-    "react/prop-types": 0,
-    "react/jsx-handler-names": 0,
-    "react/jsx-fragments": 0,
-    "react/no-unused-prop-types": 0,
-    "import/export": 0
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "error",
+    "consistent-return": "off",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
+        "newlines-between": "never",
+        "pathGroups": [
+          {
+            "group": "builtin",
+            "pattern": "react",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "ignoreRestSiblings": true,
+        "vars": "local"
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "function-declaration"
+      }
+    ],
+    "react/jsx-newline": [
+      1,
+      {
+        "prevent": true
+      }
+    ],
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "noSortAlphabetically": false
+      }
+    ],
+    "react/no-array-index-key": "off",
+    "react/require-default-props": "off",
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": true,
+        "minKeys": 2,
+        "natural": false
+      }
+    ],
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "react/jsx-fragments": "off"
   }
 }
