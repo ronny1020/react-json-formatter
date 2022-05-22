@@ -85,11 +85,9 @@ The string of Json to formate.
 The number of spaces it should use per tab.
 The default is 4.
 
-## style
+## styles
 
-Use the Object jsonStyle to control the style of formatted JSON.
-
-- from the 0.2.0 version, NOT support for className.
+Use the Object `jsonStyle` to control the style of formatted JSON.
 
 | style         | part                                      |
 | ------------- | ----------------------------------------- |
@@ -106,6 +104,26 @@ Use the Object jsonStyle to control the style of formatted JSON.
 | commaStyle    | The commas used in Array and Object       |
 | braceStyle    | The braces of Object.                     |
 | bracketStyle  | The brackets of Array.                    |
+
+## ClassNames
+
+Use the Object `jsonClassName` to add the className to formatted JSON.
+
+| style             | part                                      |
+| ----------------- | ----------------------------------------- |
+| propertyClassName | The properties of Object.                 |
+| colonClassName    | The colons of Object.                     |
+| className         | The whole parts of the formatted JSON.    |
+| tabSpaceClassName | The space of the tabs at Object or Array. |
+| numberClassName   | The numbers in JSON.                      |
+| stringClassName   | The strings in JSON.                      |
+| booleanClassName  | Both boolean values in JSON.              |
+| trueClassName     | The boolean values of true in JSON.       |
+| falseClassName    | The boolean values of false in JSON.      |
+| nullClassName     | The null values in JSON                   |
+| commaClassName    | The commas used in Array and Object       |
+| braceClassName    | The braces of Object.                     |
+| bracketClassName  | The brackets of Array.                    |
 
 ## Contributing
 
