@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { JsonFormatter } from 'react-json-formatter'
+import JsonFormatter from 'react-json-formatter'
 
 const App = () => {
   const sample = `{

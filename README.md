@@ -17,7 +17,7 @@ App.js
 ```jsx
 import React from 'react'
 
-import { JsonFormatter } from 'react-json-formatter'
+import JsonFormatter from 'react-json-formatter'
 
 const App = () => {
   const sample = `{
@@ -64,7 +64,7 @@ const App = () => {
     numberStyle: { color: 'darkorange' }
   }
 
-  return <JsonFormatter json={sample} tabWith='4' jsonStyle={jsonStyle} />
+  return <JsonFormatter json={sample} tabWith={4} jsonStyle={jsonStyle} />
 }
 
 export default App
