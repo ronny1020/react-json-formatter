@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo, useCallback, Fragment } from 'react'
+import React, { CSSProperties, useMemo, useCallback } from 'react'
 
 export type JsonObject =
   | { [key: string]: JsonObject }
@@ -6,6 +6,7 @@ export type JsonObject =
   | number
   | boolean
   | null
+  | undefined
 
 interface JsonStyle {
   booleanStyle?: CSSProperties
@@ -37,7 +38,7 @@ interface JsonClassName {
   trueClassName?: string
 }
 
-interface JsonFormatterProps {
+export interface JsonFormatterProps {
   json: string
   jsonClassName?: JsonClassName
   jsonStyle?: JsonStyle
@@ -79,43 +80,35 @@ export default function JsonFormatter({
   const jsonObject: JsonObject = useMemo(() => JSON.parse(json), [json])
 
   const repeatTabSpace = useCallback(
-    (times: number): JSX.Element[] => {
-      const repeatedTabSpace = []
-      for (let i = 0; i < times; i++) {
-        repeatedTabSpace.push(
-          <span className={tabSpaceClassName} key={i} style={tabSpaceStyle}>
-            {'\xa0'.repeat(tabWith || 4)}
-          </span>
-        )
-      }
-      return repeatedTabSpace
-    },
+    (times: number): JSX.Element => (
+      <span className={tabSpaceClassName} style={tabSpaceStyle}>
+        {'\xa0'.repeat(tabWith * times)}
+      </span>
+    ),
     [tabSpaceClassName, tabSpaceStyle, tabWith]
   )
 
   const categorize = useCallback(
-    (data: JsonObject): JSX.Element | JSX.Element[] => {
-      let TabSpaceRepeatTimes = 0
-
+    (
+      data: JsonObject,
+      tabSpaceRepeatTimes: number
+    ): JSX.Element | JSX.Element[] => {
       switch (Object.prototype.toString.call(data)) {
         case '[object Number]': {
-          const dataJSX = (
+          return (
             <span className={numberClassName} style={numberStyle}>
               {data as number}
             </span>
           )
-
-          return dataJSX
         }
 
         case '[object String]': {
-          const dataJSX = (
+          return (
             <span
               className={stringClassName}
               style={stringStyle}
             >{`"${data}"`}</span>
           )
-          return dataJSX
         }
 
         case '[object Boolean]': {
@@ -138,91 +131,73 @@ export default function JsonFormatter({
         }
 
         case '[object Object]': {
-          const dataJSX = []
-          dataJSX.push(
-            <Fragment key='{'>
+          return (
+            <React.Fragment>
               <span className={braceClassName} style={braceStyle}>
                 {'{'}
               </span>
               <br />
-            </Fragment>
-          )
-          const keys = Object.keys(data as Record<string, JsonObject>)
-          TabSpaceRepeatTimes += 1
-          Object.keys(data as Record<string, JsonObject>).forEach(
-            (key, index) => {
-              dataJSX.push(
-                <Fragment key={index}>
-                  {repeatTabSpace(TabSpaceRepeatTimes)}
-                  <span
-                    className={propertyClassName}
-                    style={propertyStyle}
-                  >{`"${key}": `}</span>
-                  {categorize((data as Record<string, JsonObject>)[key])}
-                  {index !== keys.length - 1 && <span>,</span>}
-                  <br />
-                </Fragment>
-              )
-            }
-          )
-          TabSpaceRepeatTimes -= 1
-          dataJSX.push(
-            <Fragment key='}'>
-              {repeatTabSpace(TabSpaceRepeatTimes)}
+              {Object.entries(data as Record<string, JsonObject>).map(
+                ([key, value], index, list) => (
+                  <React.Fragment key={index}>
+                    {repeatTabSpace(tabSpaceRepeatTimes + 1)}
+                    <span
+                      className={propertyClassName}
+                      style={propertyStyle}
+                    >{`"${key}": `}</span>
+                    {categorize(value, tabSpaceRepeatTimes + 1)}
+                    {index !== list.length - 1 && (
+                      <span className={commaClassName} style={commaStyle}>
+                        ,
+                      </span>
+                    )}
+                    <br />
+                  </React.Fragment>
+                )
+              )}
+              {repeatTabSpace(tabSpaceRepeatTimes)}
               <span className={braceClassName} style={braceStyle}>
                 {'}'}
               </span>
-            </Fragment>
+            </React.Fragment>
           )
-          return dataJSX
         }
 
         case '[object Array]': {
-          const dataJSX = []
-
-          dataJSX.push(
-            <Fragment key='['>
+          return (
+            <React.Fragment>
               <span className={bracketClassName} style={bracketStyle}>
                 [
               </span>
               <br />
-            </Fragment>
-          )
-          TabSpaceRepeatTimes += 1
-          for (let i = 0; i < (data as unknown as JsonObject[]).length; i++) {
-            dataJSX.push(
-              <Fragment key={i}>
-                {repeatTabSpace(TabSpaceRepeatTimes)}
-                {categorize((data as unknown as JsonObject[])[i])}
-                {i === (data as unknown as JsonObject[]).length - 1 ? null : (
-                  <span className={commaClassName} style={commaStyle}>
-                    ,
-                  </span>
-                )}
-                <br />
-              </Fragment>
-            )
-          }
-          TabSpaceRepeatTimes -= 1
-          dataJSX.push(
-            <Fragment key=']'>
-              {repeatTabSpace(TabSpaceRepeatTimes)}
+              {(data as unknown as JsonObject[]).map((value, index, list) => (
+                <React.Fragment key={index}>
+                  {repeatTabSpace(tabSpaceRepeatTimes + 1)}
+                  {categorize(value, tabSpaceRepeatTimes + 1)}
+                  {index !== list.length - 1 && (
+                    <span className={commaClassName} style={commaStyle}>
+                      ,
+                    </span>
+                  )}
+                  <br />
+                </React.Fragment>
+              ))}
+              {repeatTabSpace(tabSpaceRepeatTimes)}
               <span className={bracketClassName} style={bracketStyle}>
                 ]
               </span>
-            </Fragment>
+            </React.Fragment>
           )
-          return dataJSX
         }
 
         case '[object Null]': {
-          const dataJSX = (
+          return (
             <span className={nullClassName} style={nullStyle}>
               null
             </span>
           )
-          return dataJSX
         }
+
         default:
           return <span>type error</span>
       }
@@ -252,7 +227,10 @@ export default function JsonFormatter({
     ]
   )
 
-  const result = useMemo(() => categorize(jsonObject), [categorize, jsonObject])
+  const result = useMemo(
+    () => categorize(jsonObject, 0),
+    [categorize, jsonObject]
+  )
 
   return (
     <div className={className} style={style}>
