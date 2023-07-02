@@ -17,8 +17,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5"
+    "target": "es5",
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*", ".storybook/**/*", "vite.config.ts"],
+  "include": ["."],
   "exclude": ["node_modules", "dist", "example"]
 }

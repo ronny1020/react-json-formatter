@@ -1,0 +1,493 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`JsonFormatter > match the snapshot 1`] = `
+<div
+  class=""
+>
+  <div>
+    <span
+      class=""
+    >
+      {
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "name": 
+    </span>
+    <span
+      class=""
+    >
+      "John Doe"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "age": 
+    </span>
+    <span
+      class=""
+    >
+      30
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "isStudent": 
+    </span>
+    <span
+      class=" "
+    >
+      true
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "hobbies": 
+    </span>
+    <span
+      class=""
+    >
+      [
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "reading"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "coding"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "gaming"
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      ]
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "address": 
+    </span>
+    <span
+      class=""
+    >
+      {
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "street": 
+    </span>
+    <span
+      class=""
+    >
+      "123 Main St"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "city": 
+    </span>
+    <span
+      class=""
+    >
+      "New York"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "country": 
+    </span>
+    <span
+      class=""
+    >
+      "USA"
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      }
+    </span>
+    <br />
+    <span
+      class=""
+    />
+    <span
+      class=""
+    >
+      }
+    </span>
+  </div>
+</div>
+`;
+
+exports[`JsonFormatter > renders JSON data correctly 1`] = `
+<div
+  class=""
+>
+  <div>
+    <span
+      class=""
+    >
+      {
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "name": 
+    </span>
+    <span
+      class=""
+    >
+      "John Doe"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "age": 
+    </span>
+    <span
+      class=""
+    >
+      30
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "isStudent": 
+    </span>
+    <span
+      class=" "
+    >
+      true
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "hobbies": 
+    </span>
+    <span
+      class=""
+    >
+      [
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "reading"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "coding"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "gaming"
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      ]
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      "address": 
+    </span>
+    <span
+      class=""
+    >
+      {
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "street": 
+    </span>
+    <span
+      class=""
+    >
+      "123 Main St"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "city": 
+    </span>
+    <span
+      class=""
+    >
+      "New York"
+    </span>
+    <span
+      class=""
+    >
+      ,
+    </span>
+    <br />
+    <span
+      class=""
+    >
+          
+    </span>
+    <span
+      class=""
+    >
+      "country": 
+    </span>
+    <span
+      class=""
+    >
+      "USA"
+    </span>
+    <br />
+    <span
+      class=""
+    >
+        
+    </span>
+    <span
+      class=""
+    >
+      }
+    </span>
+    <br />
+    <span
+      class=""
+    />
+    <span
+      class=""
+    >
+      }
+    </span>
+  </div>
+</div>
+`;

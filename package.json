@@ -42,6 +42,7 @@
     "lint-staged": "npx --no-install lint-staged",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
+    "test": "vitest",
     "storybook": "storybook dev -p 6006"
   },
   "devDependencies": {
@@ -52,9 +53,12 @@
     "@storybook/react": "7.0.24",
     "@storybook/react-vite": "7.0.24",
     "@storybook/testing-library": "0.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/testing-library__jest-dom": "^5.14.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "^4.0.1",
@@ -77,6 +81,7 @@
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
+    "jsdom": "^22.1.0",
     "lint-staged": "^13.2.3",
     "prettier": "^2.8.8",
     "prop-types": "15.8.1",
@@ -85,7 +90,8 @@
     "storybook": "7.0.24",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
-    "vite-plugin-dts": "^3.0.2"
+    "vite-plugin-dts": "^3.0.2",
+    "vitest": "^0.32.2"
   },
   "peerDependencies": {
     "react": ">16.2.0",
