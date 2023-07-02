@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react'
+import { CSSProperties, useMemo, useCallback, Fragment } from 'react'
 
 export type JsonObject =
   | { [key: string]: JsonObject }
@@ -8,18 +8,18 @@ export type JsonObject =
   | null
 
 interface JsonStyle {
-  booleanStyle?: React.CSSProperties
-  braceStyle?: React.CSSProperties
-  bracketStyle?: React.CSSProperties
-  commaStyle?: React.CSSProperties
-  falseStyle?: React.CSSProperties
-  nullStyle?: React.CSSProperties
-  numberStyle?: React.CSSProperties
-  propertyStyle?: React.CSSProperties
-  stringStyle?: React.CSSProperties
-  style?: React.CSSProperties
-  tabSpaceStyle?: React.CSSProperties
-  trueStyle?: React.CSSProperties
+  booleanStyle?: CSSProperties
+  braceStyle?: CSSProperties
+  bracketStyle?: CSSProperties
+  commaStyle?: CSSProperties
+  falseStyle?: CSSProperties
+  nullStyle?: CSSProperties
+  numberStyle?: CSSProperties
+  propertyStyle?: CSSProperties
+  stringStyle?: CSSProperties
+  style?: CSSProperties
+  tabSpaceStyle?: CSSProperties
+  trueStyle?: CSSProperties
 }
 
 interface JsonClassName {
@@ -46,7 +46,20 @@ interface JsonFormatterProps {
 
 export default function JsonFormatter({
   json,
-  tabWith = 2,
+  jsonClassName: {
+    booleanClassName = '',
+    braceClassName = '',
+    bracketClassName = '',
+    className = '',
+    commaClassName = '',
+    falseClassName = '',
+    nullClassName = '',
+    numberClassName = '',
+    propertyClassName = '',
+    stringClassName = '',
+    tabSpaceClassName = '',
+    trueClassName = ''
+  } = {},
   jsonStyle: {
     booleanStyle = {},
     braceStyle = {},
@@ -61,20 +74,7 @@ export default function JsonFormatter({
     tabSpaceStyle = {},
     trueStyle = {}
   } = {},
-  jsonClassName: {
-    booleanClassName = '',
-    braceClassName = '',
-    bracketClassName = '',
-    className = '',
-    commaClassName = '',
-    falseClassName = '',
-    nullClassName = '',
-    numberClassName = '',
-    propertyClassName = '',
-    stringClassName = '',
-    tabSpaceClassName = '',
-    trueClassName = ''
-  } = {}
+  tabWith = 2
 }: JsonFormatterProps): JSX.Element {
   const jsonObject: JsonObject = useMemo(() => JSON.parse(json), [json])
 
@@ -101,7 +101,7 @@ export default function JsonFormatter({
         case '[object Number]': {
           const dataJSX = (
             <span className={numberClassName} style={numberStyle}>
-              {data}
+              {data as number}
             </span>
           )
 
@@ -140,19 +140,19 @@ export default function JsonFormatter({
         case '[object Object]': {
           const dataJSX = []
           dataJSX.push(
-            <React.Fragment key='{'>
+            <Fragment key='{'>
               <span className={braceClassName} style={braceStyle}>
                 {'{'}
               </span>
               <br />
-            </React.Fragment>
+            </Fragment>
           )
           const keys = Object.keys(data as Record<string, JsonObject>)
           TabSpaceRepeatTimes += 1
           Object.keys(data as Record<string, JsonObject>).forEach(
             (key, index) => {
               dataJSX.push(
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   {repeatTabSpace(TabSpaceRepeatTimes)}
                   <span
                     className={propertyClassName}
@@ -161,18 +161,18 @@ export default function JsonFormatter({
                   {categorize((data as Record<string, JsonObject>)[key])}
                   {index !== keys.length - 1 && <span>,</span>}
                   <br />
-                </React.Fragment>
+                </Fragment>
               )
             }
           )
           TabSpaceRepeatTimes -= 1
           dataJSX.push(
-            <React.Fragment key='}'>
+            <Fragment key='}'>
               {repeatTabSpace(TabSpaceRepeatTimes)}
               <span className={braceClassName} style={braceStyle}>
                 {'}'}
               </span>
-            </React.Fragment>
+            </Fragment>
           )
           return dataJSX
         }
@@ -181,17 +181,17 @@ export default function JsonFormatter({
           const dataJSX = []
 
           dataJSX.push(
-            <React.Fragment key='['>
+            <Fragment key='['>
               <span className={bracketClassName} style={bracketStyle}>
                 [
               </span>
               <br />
-            </React.Fragment>
+            </Fragment>
           )
           TabSpaceRepeatTimes += 1
           for (let i = 0; i < (data as unknown as JsonObject[]).length; i++) {
             dataJSX.push(
-              <React.Fragment key={i}>
+              <Fragment key={i}>
                 {repeatTabSpace(TabSpaceRepeatTimes)}
                 {categorize((data as unknown as JsonObject[])[i])}
                 {i === (data as unknown as JsonObject[]).length - 1 ? null : (
@@ -200,17 +200,17 @@ export default function JsonFormatter({
                   </span>
                 )}
                 <br />
-              </React.Fragment>
+              </Fragment>
             )
           }
           TabSpaceRepeatTimes -= 1
           dataJSX.push(
-            <React.Fragment key=']'>
+            <Fragment key=']'>
               {repeatTabSpace(TabSpaceRepeatTimes)}
               <span className={bracketClassName} style={bracketStyle}>
                 ]
               </span>
-            </React.Fragment>
+            </Fragment>
           )
           return dataJSX
         }

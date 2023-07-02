@@ -5,18 +5,17 @@
     "airbnb/hooks",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:typescript-sort-keys/recommended"
+    "plugin:typescript-sort-keys/recommended",
+    "plugin:storybook/recommended"
   ],
   "plugins": [
     "react",
     "react-hooks",
     "@typescript-eslint",
-    "jest",
     "sort-keys-fix",
     "typescript-sort-keys",
     "sort-destructure-keys"
@@ -25,9 +24,6 @@
     "node": true
   },
   "parserOptions": {
-    "babelOptions": {
-      "presets": ["@babel/preset-react"]
-    },
     "ecmaFeatures": {
       "jsx": true,
       "legacyDecorators": true
@@ -35,7 +31,7 @@
     "ecmaVersion": 2021,
     "requireConfigFile": false,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "tsconfig.json"
   },
   "parser": "@typescript-eslint/parser",
   "settings": {
