@@ -83,7 +83,7 @@ The string of Json to formate.
 ### tabWith: number
 
 The number of spaces it should use per tab.
-The default is 4.
+The default is 2.
 
 ## styles
 
