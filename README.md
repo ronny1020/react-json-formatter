@@ -72,7 +72,7 @@ export default App
 
 ## Demo
 
-[Demo](https://ronny1020.github.io/react-json-formatter/)
+[Demo](https://master--64a2e29586ad3ad1694ee152.chromatic.com)
 
 ## Attributes
 
