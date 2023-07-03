@@ -9,6 +9,9 @@ build
 storybook-static
 dist
 
+# test
+coverage
+
 # misc
 .DS_Store
 .env
