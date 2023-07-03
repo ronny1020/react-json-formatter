@@ -43,6 +43,7 @@
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
     "test": "vitest",
+    "test-husky": "vitest --run",
     "storybook": "storybook dev -p 6006"
   },
   "devDependencies": {
