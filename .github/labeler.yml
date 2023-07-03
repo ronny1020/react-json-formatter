@@ -1,0 +1,20 @@
+repo:
+  - '*'
+
+test:
+  - 'src/**/*.test.tsx'
+
+feature:
+  - src/**/*
+
+document:
+  - /**/*.md
+
+ci/cd:
+  - /**/*.yml
+
+.storybook:
+  - .storybook
+
+storybook:
+  - 'src/**/*.stories.tsx'

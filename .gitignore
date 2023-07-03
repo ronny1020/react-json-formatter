@@ -6,8 +6,11 @@ node_modules
 
 # builds
 build
+storybook-static
 dist
-.rpt2_cache
+
+# test
+coverage
 
 # misc
 .DS_Store
