@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+import { InlineConfig } from 'vite'
 
 const config: StorybookConfig = {
   addons: [
@@ -13,6 +14,9 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {}
   },
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)']
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  viteFinal: async (inlineConfig: InlineConfig) => {
+    return { ...inlineConfig, base: '/react-json-formatter/' }
+  }
 }
 export default config

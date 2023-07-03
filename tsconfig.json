@@ -20,6 +20,6 @@
     "target": "es5",
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["."],
+  "include": ["**/*.ts", "**/*.tsx", ".storybook/*.ts"],
   "exclude": ["node_modules", "dist", "storybook-static"]
 }
