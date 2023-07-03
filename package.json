@@ -81,7 +81,6 @@
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-storybook": "^0.6.12",
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
-    "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "lint-staged": "^13.2.3",
