@@ -18,7 +18,9 @@
   },
   "type": "module",
   "license": "MIT",
-  "author": "ronny1020",
+  "author": {
+    "name": "ronny1020"
+  },
   "directories": {
     "example": "example"
   },
@@ -44,7 +46,8 @@
     "prepare": "husky install",
     "test": "vitest",
     "test-husky": "vitest --run",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "chromatic": "npx chromatic --project-token=chpt_6d2a9426aaad6f1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.0.24",
@@ -64,6 +67,7 @@
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "^4.0.1",
     "@vitest/coverage-v8": "^0.32.4",
+    "chromatic": "^6.19.9",
     "cross-env": "^7.0.3",
     "eslint": "^8.44.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -100,5 +104,7 @@
   },
   "engines": {
     "node": ">=10"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "react-json-formatter@0.3.2"
 }
