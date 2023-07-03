@@ -39,12 +39,27 @@ interface JsonClassName {
 }
 
 export interface JsonFormatterProps {
+  /**
+   * The JSON data to be formatted.
+   */
   json: string
+  /**
+   * Optional class names for different elements of the JSON formatter.
+   */
   jsonClassName?: JsonClassName
+  /**
+   * Optional inline styles for different elements of the JSON formatter.
+   */
   jsonStyle?: JsonStyle
+  /**
+   * The width of the tab space. Default is 2.
+   */
   tabWith?: number
 }
 
+/**
+ * A React component that formats and displays JSON data in a styled manner.
+ */
 export default function JsonFormatter({
   json,
   jsonClassName: {
