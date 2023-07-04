@@ -27,6 +27,10 @@ export default defineConfig({
     react({
       jsxRuntime: 'classic'
     }),
-    dts({ include: ['src'], insertTypesEntry: true })
+    dts({
+      exclude: ['**/*.test.*', '**/*.stories.*'],
+      include: ['src'],
+      insertTypesEntry: true
+    })
   ]
 })

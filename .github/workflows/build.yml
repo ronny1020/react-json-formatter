@@ -1,0 +1,22 @@
+name: test building package
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+      - run: pnpm i
+      - run: pnpm build
