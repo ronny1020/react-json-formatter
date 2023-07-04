@@ -6,8 +6,22 @@
 
 ## Install
 
+### npm
+
 ```bash
 npm i react-json-formatter
+```
+
+### yarn
+
+```bash
+yarn add react-json-formatter
+```
+
+### pnpm
+
+```bash
+pnpm i react-json-formatter
 ```
 
 ## Usage
@@ -76,7 +90,7 @@ export default App
 
 ## Attributes
 
-### json: string(Json)
+### json: string(Json) or valid json object
 
 The string of Json to formate.
 

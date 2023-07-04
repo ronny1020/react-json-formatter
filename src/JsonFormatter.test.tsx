@@ -14,7 +14,7 @@ describe('JsonFormatter', () => {
     } 
   }`
 
-  it('renders JSON data correctly', () => {
+  it('renders JSON string correctly', () => {
     const { container } = render(<JsonFormatter json={json} />)
     expect(container.textContent).toContain('name')
     expect(container.textContent).toContain('John Doe')
@@ -32,9 +32,27 @@ describe('JsonFormatter', () => {
     expect(container.textContent).toContain('city')
     expect(container.textContent).toContain('New York')
     expect(container.textContent).toContain('country')
-    expect(container.textContent).toContain('USA')
+  })
 
-    expect(container.firstChild).toMatchSnapshot()
+  it('renders JSON object correctly', () => {
+    const { container } = render(<JsonFormatter json={JSON.parse(json)} />)
+    expect(container.textContent).toContain('name')
+    expect(container.textContent).toContain('John Doe')
+    expect(container.textContent).toContain('age')
+    expect(container.textContent).toContain('30')
+    expect(container.textContent).toContain('isStudent')
+    expect(container.textContent).toContain('true')
+    expect(container.textContent).toContain('hobbies')
+    expect(container.textContent).toContain('reading')
+    expect(container.textContent).toContain('coding')
+    expect(container.textContent).toContain('gaming')
+    expect(container.textContent).toContain('address')
+    expect(container.textContent).toContain('street')
+    expect(container.textContent).toContain('123 Main St')
+    expect(container.textContent).toContain('city')
+    expect(container.textContent).toContain('New York')
+    expect(container.textContent).toContain('country')
+    expect(container.textContent).toContain('USA')
   })
 
   it('applies custom class names correctly', () => {

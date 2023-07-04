@@ -40,9 +40,9 @@ interface JsonClassName {
 
 export interface JsonFormatterProps {
   /**
-   * The JSON data to be formatted.
+   * The JSON data to be formatted. The value could be a stringified string or a valid json object.
    */
-  json: string
+  json: string | JsonObject
   /**
    * Optional class names for different elements of the JSON formatter.
    */
@@ -92,7 +92,16 @@ export default function JsonFormatter({
   } = {},
   tabWith = 2
 }: JsonFormatterProps): JSX.Element {
-  const jsonObject: JsonObject = useMemo(() => JSON.parse(json), [json])
+  const jsonObject: JsonObject = useMemo(() => {
+    if (typeof json === 'string') {
+      try {
+        return JSON.parse(json)
+      } catch (error) {
+        return json
+      }
+    }
+    return json
+  }, [json])
 
   const repeatTabSpace = useCallback(
     (times: number): JSX.Element => (
