@@ -63,8 +63,8 @@ importers:
         specifier: ^0.32.4
         version: 0.32.4(vitest@0.32.4(jsdom@22.1.0))
       chromatic:
-        specifier: ^6.19.9
-        version: 6.24.1
+        specifier: ^11.5.4
+        version: 11.5.4
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -2142,10 +2142,6 @@ packages:
         optional: true
       '@chromatic-com/playwright':
         optional: true
-
-  chromatic@6.24.1:
-    resolution: {integrity: sha512-XbpdWWHvFpEHtcq1Km71UcuQ07effB+8q8L47E1Y7HJmJ4ZCoKCuPd8liNrbnvwEAxqfBZvTcONYU/3BPz2i5w==}
-    hasBin: true
 
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
@@ -7818,8 +7814,6 @@ snapshots:
   chownr@2.0.0: {}
 
   chromatic@11.5.4: {}
-
-  chromatic@6.24.1: {}
 
   ci-info@3.9.0: {}
 
