@@ -19,9 +19,5 @@ jobs:
           node-version: 20
           cache: 'pnpm'
       - run: pnpm i
-      - uses: sibiraj-s/action-eslint@v3
-        with:
-          eslint-args: '--ignore-path=.gitignore --quiet'
-          ignore-path: .eslintignore
-          extensions: 'js,jsx,ts,tsx'
-          annotations: true
+      - name: 'lint'
+        run: pnpm run lint
