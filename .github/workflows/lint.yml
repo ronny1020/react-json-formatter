@@ -19,9 +19,9 @@ jobs:
           node-version: 20
           cache: 'pnpm'
       - run: pnpm i
-      - uses: sibiraj-s/action-eslint@v2
+      - uses: sibiraj-s/action-eslint@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          eslint-args: '--ignore-path=.eslintignore --quiet'
+          eslint-args: '--ignore-path=.gitignore --quiet'
+          ignore-path: .eslintignore
           extensions: 'js,jsx,ts,tsx'
           annotations: true
